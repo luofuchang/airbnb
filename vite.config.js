@@ -17,9 +17,9 @@ export default defineConfig({
       less: {
         modifyVars: {
           // 直接覆盖变量
-          "primary-color": "#1DA57A",
-          "link-color": "#1DA57A",
-          "border-radius-base": "2px",
+          // "primary-color": "#1DA57A",
+          // "link-color": "#1DA57A",
+          // "border-radius-base": "2px",
           // 或者导入一个 Less 文件来覆盖变量
           // 'hack': `true; @import "${path.resolve(__dirname, 'src/styles/variables.less')}";`,
         },
