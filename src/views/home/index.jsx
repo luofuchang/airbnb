@@ -3,6 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { HomeWrapper } from "./style";
 import HomeBanner from "./copns/home-banner";
 import { fetchHomeDataAction } from "@/store/modules/home";
+import SectionHeader from "@/components/section-header";
 
 const Home = memo(() => {
   // 首页加载时，发送请求获取数据
@@ -16,22 +17,13 @@ const Home = memo(() => {
     shallowEqual
   );
 
-  console.log(goodPriceInfo);
-
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <h2>{!goodPriceInfo ? <div>loading</div> : goodPriceInfo.title}</h2>
-        <ul>
-          {!goodPriceInfo ? (
-            <div>loading</div>
-          ) : (
-            goodPriceInfo.list?.map((item) => {
-              return <li key={item.id}>{item.name}</li>;
-            })
-          )}
-        </ul>
+        <div className="good-price">
+          <SectionHeader title={goodPriceInfo.title} />
+        </div>
       </div>
     </HomeWrapper>
   );
