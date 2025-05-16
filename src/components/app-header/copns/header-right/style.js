@@ -24,6 +24,7 @@ export const RightWrapper = styled.div`
     }
   }
   .profile{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -38,6 +39,37 @@ export const RightWrapper = styled.div`
     margin-left: 12px;
 
     ${(props) => props.theme.mixins.boxShadow}
+
+    .panel{
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 240px;
+      // height: 200px;
+      background-color: #fff;
+      box-shadow: 0 0px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      color: #666;
+
+      .top, .bottom{
+        padding: 10px 0;
+
+        .item{
+          height: 40px;
+          line-height: 40px;
+          padding: 0 20px;
+
+          &:hover{
+            background-color: #f5f5f5;
+          }
+        }
+      }
+
+      .top{
+        border-bottom: 1px solid #ddd;
+      }
+    }
   }
 }
 `;

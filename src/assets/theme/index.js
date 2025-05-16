@@ -23,7 +23,7 @@ const theme = {
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 初始阴影 */
       
       &:hover{
-        transform: scale(1.15); /* 放大5% */
+        transform: scale(1.05); /* 放大5% */
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.18); /* 更明显的阴影 */
       }
     `,
