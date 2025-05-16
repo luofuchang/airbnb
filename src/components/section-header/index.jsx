@@ -3,7 +3,7 @@ import { HeaderWrapper } from "./style";
 import PropTypes from "prop-types";
 
 const SectionHeader = memo((props) => {
-  const { title, subTitle = "默认子标题" } = props;
+  const { title, subTitle = "" } = props;
   return (
     <HeaderWrapper>
       <h2 className="title">{title}</h2>
