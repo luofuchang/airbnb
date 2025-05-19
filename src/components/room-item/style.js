@@ -54,7 +54,7 @@ export const RoomItemWrapper = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 
-    min-height: 38px; /* 设置最小高度确保两行文本空间 */
+    min-height: 36px; /* 设置最小高度确保两行文本空间 */
     // margin: 4px 0;
   }
   .price {
