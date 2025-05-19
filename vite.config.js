@@ -10,6 +10,7 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"), // 这里是将src目录配置别名为 @ 方便在项目中导入src目录下的文件
       components: resolve(__dirname, "./src/components"),
       utils: resolve(__dirname, "./src/utils"),
+      "@mui/styled-engine": "@mui/styled-engine-sc",
     },
   },
   css: {

@@ -1,4 +1,5 @@
-const theme = {
+import { createTheme } from "@mui/material/styles";
+const theme = createTheme({
   color: {
     primary: "#ff385c",
     secondary: "#00848A",
@@ -28,6 +29,6 @@ const theme = {
       }
     `,
   },
-};
+});
 
 export default theme;
