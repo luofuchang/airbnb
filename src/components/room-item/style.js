@@ -5,16 +5,13 @@ export const RoomItemWrapper = styled.div`
   padding: 8px;
   margin: 8px 0;
   width: ${(props) => props.$itemwidth};
+  // width: 25%;
 
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  // height: 100%;
+  // display: flex;
 
   .inner {
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
   }
 
   .cover {
@@ -24,8 +21,6 @@ export const RoomItemWrapper = styled.div`
     border-radius: 3px;
     overflow: hidden;
 
-    flex-shrink: 0; /* 防止封面图被压缩 */
-
     img {
       position: absolute;
       left: 0;
@@ -33,7 +28,7 @@ export const RoomItemWrapper = styled.div`
       width: 100%;
       height: 100%;
 
-      object-fit: cover; /* 确保图片填充容器 */
+      // object-fit: cover; /* 确保图片填充容器 */
     }
   }
 

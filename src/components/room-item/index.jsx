@@ -4,10 +4,10 @@ import { RoomItemWrapper } from "./style";
 import { Rating } from "@mui/material";
 
 const RoomItem = memo((props) => {
-  const { itemData, itemWidth = "25%" } = props;
+  const { itemData, itemwidth } = props;
   return (
     <RoomItemWrapper
-      $itemwidth={itemWidth}
+      $itemwidth={itemwidth}
       $verify_color={itemData?.verify_info?.text_color ?? "#39576a"}
       $content_color={itemData?.bottom_info?.content_color ?? "#39576a"}
       $content_fontsize={itemData?.bottom_info?.font_size ?? "12px"}
