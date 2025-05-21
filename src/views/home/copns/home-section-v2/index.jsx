@@ -4,11 +4,12 @@ import { SectionV2Wrapper } from "./style";
 import SectionHeader from "@/components/section-header";
 import SectionRoom from "@/components/section-room";
 import SectionTabs from "@/components/section-tabs";
+import SectionFooter from "@/components/section-footer";
 
 const HomeSectionV2 = memo((props) => {
   const { infoData } = props;
 
-  const initialName = Object.keys(infoData?.dest_list)[0];
+  const initialName = Object.keys(infoData.dest_list)[0];
 
   const [name, setName] = useState(initialName);
 
@@ -26,6 +27,7 @@ const HomeSectionV2 = memo((props) => {
         roomList={infoData.dest_list?.[name]}
         itemwidth="33.33333333%"
       />
+      <SectionFooter name={name} />
     </SectionV2Wrapper>
   );
 });

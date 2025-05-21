@@ -27,11 +27,18 @@ const Home = memo(() => {
     shallowEqual
   );
 
+  const { recommendDestInfo } = useSelector((state) => ({
+    recommendDestInfo: state.home.recommendDestInfo,
+  }));
+
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
         {loadSuccess(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
+        {loadSuccess(recommendDestInfo) && (
+          <HomeSectionV2 infoData={recommendDestInfo} />
+        )}
         {loadSuccess(goodPriceInfo) && (
           <HomeSectionV1 infoData={goodPriceInfo} />
         )}

@@ -18,7 +18,7 @@ export const RoomItemWrapper = styled.div`
     position: relative;
     box-sizing: border-box;
     padding: 66.6% 8px 0;
-    border-radius: 3px;
+    border-radius: 20px;
     overflow: hidden;
 
     img {
