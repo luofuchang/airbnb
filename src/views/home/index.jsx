@@ -27,9 +27,12 @@ const Home = memo(() => {
     shallowEqual
   );
 
-  const { recommendDestInfo } = useSelector((state) => ({
-    recommendDestInfo: state.home.recommendDestInfo,
-  }));
+  const { recommendDestInfo } = useSelector(
+    (state) => ({
+      recommendDestInfo: state.home.recommendDestInfo,
+    }),
+    shallowEqual
+  );
 
   return (
     <HomeWrapper>
