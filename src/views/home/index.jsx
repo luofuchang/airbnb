@@ -6,6 +6,7 @@ import { fetchHomeDataAction } from "@/store/modules/home";
 import HomeSectionV1 from "./copns/home-section-v1";
 import HomeSectionV2 from "./copns/home-section-v2";
 import { loadSuccess } from "@/utils";
+import HomeLongfor from "./copns/home-longfor";
 
 const Home = memo(() => {
   // 首页加载时，发送请求获取数据
@@ -26,11 +27,14 @@ const Home = memo(() => {
     (state) => ({ discountInfo: state.home.discountInfo }),
     shallowEqual
   );
-
   const { recommendDestInfo } = useSelector(
     (state) => ({
       recommendDestInfo: state.home.recommendDestInfo,
     }),
+    shallowEqual
+  );
+  const { longforInfo } = useSelector(
+    (state) => ({ longforInfo: state.home.longforInfo }),
     shallowEqual
   );
 
@@ -38,13 +42,18 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
+        {loadSuccess(longforInfo) && <HomeLongfor infoData={longforInfo} />}
+
         {loadSuccess(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
+
         {loadSuccess(recommendDestInfo) && (
           <HomeSectionV2 infoData={recommendDestInfo} />
         )}
+
         {loadSuccess(goodPriceInfo) && (
           <HomeSectionV1 infoData={goodPriceInfo} />
         )}
+
         {loadSuccess(highScoreInfo) && (
           <HomeSectionV1 infoData={highScoreInfo} />
         )}

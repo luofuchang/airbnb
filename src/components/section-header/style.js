@@ -11,6 +11,6 @@ export const HeaderWrapper = styled.div`
 
   .sub-title {
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 4px;
   }
 `;
