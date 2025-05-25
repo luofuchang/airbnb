@@ -7,6 +7,7 @@ import HomeSectionV1 from "./copns/home-section-v1";
 import HomeSectionV2 from "./copns/home-section-v2";
 import { loadSuccess } from "@/utils";
 import HomeLongfor from "./copns/home-longfor";
+import HomeSectionV3 from "./copns/home-section-v3";
 
 const Home = memo(() => {
   // 首页加载时，发送请求获取数据
@@ -38,25 +39,27 @@ const Home = memo(() => {
     shallowEqual
   );
 
+  const { plusInfo } = useSelector(
+    (state) => ({ plusInfo: state.home.plusInfo }),
+    shallowEqual
+  );
+
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
         {loadSuccess(longforInfo) && <HomeLongfor infoData={longforInfo} />}
-
         {loadSuccess(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
-
         {loadSuccess(recommendDestInfo) && (
           <HomeSectionV2 infoData={recommendDestInfo} />
         )}
-
         {loadSuccess(goodPriceInfo) && (
           <HomeSectionV1 infoData={goodPriceInfo} />
         )}
-
         {loadSuccess(highScoreInfo) && (
           <HomeSectionV1 infoData={highScoreInfo} />
         )}
+        {loadSuccess(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
       </div>
     </HomeWrapper>
   );
