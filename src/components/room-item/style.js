@@ -28,7 +28,7 @@ export const RoomItemWrapper = styled.div`
       width: 100%;
       height: 100%;
 
-      // object-fit: cover; /* 确保图片填充容器 */
+      object-fit: cover; /* 确保图片填充容器 */
     }
   }
 

@@ -13,6 +13,7 @@ export const getEntireDataAction = createAsyncThunk(
     return {
       roomList: response.list,
       totalCount: response.totalCount,
+      currentPage: currentPageToFetch,
     };
   }
 );
@@ -41,6 +42,7 @@ const entireSlice = createSlice({
         state.isLoading = false;
         state.roomList = payload.roomList;
         state.totalCount = payload.totalCount;
+        state.currentPage = payload.currentPage;
       })
       .addCase(getEntireDataAction.rejected, (state, { error }) => {
         state.isLoading = false;
