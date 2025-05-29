@@ -32,9 +32,7 @@ const EntireFilter = memo((props) => {
     });
   };
 
-  useEffect(() => {
-    console.log(filterList);
-  }, [filterList]);
+  useEffect(() => {}, [filterList]);
 
   return (
     <FilterWrapper>

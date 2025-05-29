@@ -14,14 +14,104 @@ export const RoomItemWrapper = styled.div`
     width: 100%;
   }
 
+  .slider {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      .control {
+        display: flex;
+      }
+    }
+
+    .indicator {
+      position: absolute;
+      bottom: 10px;
+      width: 30%;
+      z-index: 9;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+      .dot-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10%;
+
+        .dot {
+          width: 6px;
+          height: 6px;
+          background-color: #fff;
+          border-radius: 50%;
+
+          &.active {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .control {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: space-between;
+    display: none;
+    color: #fff;
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 83px;
+      height: 100%;
+      background: linear-gradient(
+        to left,
+        transparent 0%,
+        rgba(0, 0, 0, 0.25) 100%
+      );
+
+      &.right {
+        background: linear-gradient(
+          to right,
+          transparent 0%,
+          rgba(0, 0, 0, 0.25) 100%
+        );
+      }
+    }
+  }
+
   .cover {
     position: relative;
     box-sizing: border-box;
     padding: 66.6% 8px 0;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
 
-    img {
+    .ant-carousel {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .item {
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    > img {
       position: absolute;
       left: 0;
       top: 0;

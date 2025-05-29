@@ -1,10 +1,36 @@
 import PropTypes from "prop-types";
-import React, { memo } from "react";
+import React, { memo, useRef } from "react";
 import { RoomItemWrapper } from "./style";
 import { Rating } from "@mui/material";
+import IconArrowLeft from "@/assets/svg/icon-arrow-left";
+import IconArrowRight from "@/assets/svg/icon-arrow-right";
+import { Carousel } from "antd";
+import Indicator from "@/base-ui/Indicator";
+import { useState } from "react";
 
 const RoomItem = memo((props) => {
   const { itemData, itemwidth } = props;
+  const sliderRef = useRef();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const leftClickHandle = () => {
+    sliderRef.current.prev();
+    setActiveIndex((prevIndex) => {
+      const newIndex = prevIndex - 1;
+      return newIndex < 0 ? itemData.picture_urls.length - 1 : newIndex;
+    });
+  };
+
+  const rightClickHandle = () => {
+    sliderRef.current.next();
+    setActiveIndex((prevIndex) => {
+      const newIndex = prevIndex + 1;
+      return newIndex > itemData.picture_urls.length - 1 ? 0 : newIndex;
+    });
+  };
+
+  const slider = itemData?.picture_urls?.length > 0;
+
   return (
     <RoomItemWrapper
       $itemwidth={itemwidth}
@@ -13,9 +39,47 @@ const RoomItem = memo((props) => {
       $content_fontsize={itemData?.bottom_info?.font_size ?? "12px"}
     >
       <div className="inner">
-        <div className="cover">
-          <img src={itemData.picture_url} alt="" />
-        </div>
+        {!slider && (
+          <div className="cover">
+            <img src={itemData.picture_url} alt="" />
+          </div>
+        )}
+        {slider && (
+          <div className="slider">
+            <div className="control">
+              <div className="btn left" onClick={leftClickHandle}>
+                <IconArrowLeft width="24" height="24" />
+              </div>
+              <div className="btn right" onClick={rightClickHandle}>
+                <IconArrowRight width="24" height="24" />
+              </div>
+            </div>
+            <div className="indicator">
+              <Indicator activeIndex={activeIndex}>
+                {itemData &&
+                  itemData.picture_urls.map((item, index) => {
+                    return (
+                      <div className="dot-item" key={item}>
+                        <span
+                          className={`dot ${
+                            index === activeIndex ? "active" : ""
+                          }`.trim()}
+                        ></span>
+                      </div>
+                    );
+                  })}
+              </Indicator>
+            </div>
+            <Carousel dots={false} ref={sliderRef}>
+              {itemData &&
+                itemData.picture_urls.map((item, index) => (
+                  <div className="cover" key={index}>
+                    <img src={item} alt="" />
+                  </div>
+                ))}
+            </Carousel>
+          </div>
+        )}
         <div className="desc">{itemData.verify_info.messages.join(" · ")}</div>
         <div className="name">{itemData.name}</div>
         <div className="price">{itemData.price_format}</div>
