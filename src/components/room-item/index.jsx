@@ -9,27 +9,33 @@ import Indicator from "@/base-ui/Indicator";
 import { useState } from "react";
 
 const RoomItem = memo((props) => {
-  const { itemData, itemwidth } = props;
+  const { itemData, itemwidth, itemClick } = props;
   const sliderRef = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const leftClickHandle = () => {
+  const leftClickHandle = (e) => {
     sliderRef.current.prev();
     setActiveIndex((prevIndex) => {
       const newIndex = prevIndex - 1;
       return newIndex < 0 ? itemData.picture_urls.length - 1 : newIndex;
     });
+    e.stopPropagation();
   };
 
-  const rightClickHandle = () => {
+  const rightClickHandle = (e) => {
     sliderRef.current.next();
     setActiveIndex((prevIndex) => {
       const newIndex = prevIndex + 1;
       return newIndex > itemData.picture_urls.length - 1 ? 0 : newIndex;
     });
+    e.stopPropagation();
   };
 
   const slider = itemData?.picture_urls?.length > 0;
+
+  const ItemClickHandle = () => {
+    if (itemClick) itemClick(itemData);
+  };
 
   return (
     <RoomItemWrapper
@@ -37,6 +43,7 @@ const RoomItem = memo((props) => {
       $verify_color={itemData?.verify_info?.text_color ?? "#39576a"}
       $content_color={itemData?.bottom_info?.content_color ?? "#39576a"}
       $content_fontsize={itemData?.bottom_info?.font_size ?? "12px"}
+      onClick={ItemClickHandle}
     >
       <div className="inner">
         {!slider && (
@@ -47,10 +54,10 @@ const RoomItem = memo((props) => {
         {slider && (
           <div className="slider">
             <div className="control">
-              <div className="btn left" onClick={leftClickHandle}>
+              <div className="btn left" onClick={(e) => leftClickHandle(e)}>
                 <IconArrowLeft width="24" height="24" />
               </div>
-              <div className="btn right" onClick={rightClickHandle}>
+              <div className="btn right" onClick={(e) => rightClickHandle(e)}>
                 <IconArrowRight width="24" height="24" />
               </div>
             </div>

@@ -2,8 +2,6 @@ import PropTypes from "prop-types";
 import React, { memo, useEffect } from "react";
 import { IndicatorWrapper } from "./style";
 import { useRef } from "react";
-import { Children } from "react";
-import { isValidElement } from "react";
 
 const Indicator = memo((props) => {
   const { activeIndex = 0, activeColor } = props;
@@ -43,22 +41,6 @@ const Indicator = memo((props) => {
     <IndicatorWrapper $activeColor={activeColor || "#fff"}>
       <div className="i-content" ref={contentRef}>
         {props.children}
-        {/* {Children.map(props.children, (child, index) => {
-          if (isValidElement(child)) {
-            // 保存已有的class
-            const existedClassNames = child.props.className;
-            // 为活动项添加 'active' 类
-            const activeClassName = index === activeIndex ? "active" : "";
-            // 合并已有的类名和 'active' 类（如果适用）
-            // 使用 trim() 来移除可能因 existingClassName 或 activeClassName 为空而产生的多余空格
-            const newClassName =
-              `${existedClassNames} ${activeClassName}`.trim();
-            return React.cloneElement(child, {
-              className: newClassName || undefined,
-            });
-          }
-          return child;
-        })} */}
       </div>
     </IndicatorWrapper>
   );
