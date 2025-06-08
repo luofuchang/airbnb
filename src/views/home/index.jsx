@@ -8,12 +8,14 @@ import HomeSectionV2 from "./copns/home-section-v2";
 import { loadSuccess } from "@/utils";
 import HomeLongfor from "./copns/home-longfor";
 import HomeSectionV3 from "./copns/home-section-v3";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 
 const Home = memo(() => {
   // 首页加载时，发送请求获取数据
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchHomeDataAction());
+    dispatch(changeHeaderConfigAction({ isFixed: true }));
   }, [dispatch]);
 
   const { goodPriceInfo } = useSelector(

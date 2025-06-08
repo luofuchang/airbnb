@@ -5,12 +5,14 @@ import EntireRoom from "./copns/entire-rooms";
 import EntirePagination from "./copns/entire-pagination";
 import { useDispatch } from "react-redux";
 import { getEntireDataAction } from "@/store/modules/entire";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 
 const Entire = memo(() => {
   // 从redux发送请求获取数据
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getEntireDataAction());
+    dispatch(changeHeaderConfigAction({ isFixed: true }));
   }, [dispatch]);
 
   return (

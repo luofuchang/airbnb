@@ -3,10 +3,15 @@ import { HeaderWrapper } from "./style";
 import HeaderLeft from "./copns/header-left";
 import HeaderCenter from "./copns/header-center";
 import HeaderRight from "./copns/header-right";
+import { useSelector } from "react-redux";
+import classNames from "classnames";
 
 const AppHeader = memo(() => {
+  const headerConfig = useSelector((state) => state.main.headerConfig);
+  const { isFixed } = headerConfig;
+
   return (
-    <HeaderWrapper>
+    <HeaderWrapper className={classNames({ fixed: isFixed })}>
       <HeaderLeft />
       <HeaderCenter />
       <HeaderRight />
