@@ -12,9 +12,12 @@ const AppHeader = memo(() => {
 
   return (
     <HeaderWrapper className={classNames({ fixed: isFixed })}>
-      <HeaderLeft />
-      <HeaderCenter />
-      <HeaderRight />
+      <div className="content">
+        <HeaderLeft />
+        <HeaderCenter />
+        <HeaderRight />
+      </div>
+      <div className="search-area"></div>
     </HeaderWrapper>
   );
 });
